@@ -18,8 +18,8 @@ export default function ProfileCard() {
                 index % 2 === 0 ? "bg-white/0" : "bg-black/10"
               }`}
             >
-              <dt className="px-3 py-3.5">{fact.label}</dt>
-              <dd className="px-3 py-3.5 font-semibold">{fact.value}</dd>
+              <dt className="px-3 py-3.5 font-medium">{fact.label}</dt>
+              <dd className="px-3 py-3.5 font-normal">{fact.value}</dd>
             </div>
           ))}
         </dl>

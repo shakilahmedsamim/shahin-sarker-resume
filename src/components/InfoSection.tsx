@@ -46,7 +46,7 @@ function RowValue({ row }: { row: Row }) {
     );
   }
 
-  return <span className="whitespace-pre-line">{row.value}</span>;
+  return <span className="whitespace-pre-line font-normal">{row.value}</span>;
 }
 
 export default function InfoSection({ section }: { section: Section }) {
@@ -55,7 +55,7 @@ export default function InfoSection({ section }: { section: Section }) {
       id={section.id}
       className="scroll-mt-20 overflow-hidden rounded-2xl border-2 border-brand-700 bg-white print:rounded-none print:border print:shadow-none"
     >
-      <h2 className="border-b border-brand-100 py-4 text-center text-lg font-bold text-brand-700 sm:text-xl">
+      <h2 className="border-b border-brand-100 py-4 text-center text-lg font-semibold text-brand-700 sm:text-xl">
         {section.title}
       </h2>
       <div>
@@ -67,8 +67,8 @@ export default function InfoSection({ section }: { section: Section }) {
                 key={row.label}
                 className={`border-t border-brand-100 px-5 py-4 text-base sm:text-lg ${zebra}`}
               >
-                <div className="font-semibold text-brand-800">{row.label}</div>
-                <div className="mt-2 text-ink">
+                <div className="font-medium text-brand-800">{row.label}</div>
+                <div className="mt-2 font-normal text-ink">
                   <RowValue row={row} />
                 </div>
               </div>
@@ -79,8 +79,8 @@ export default function InfoSection({ section }: { section: Section }) {
               key={row.label}
               className={`grid grid-cols-2 divide-x divide-brand-100 border-t border-brand-100 text-base sm:text-lg ${zebra}`}
             >
-              <div className="px-5 py-4 font-semibold text-brand-800">{row.label}</div>
-              <div className="flex items-center px-5 py-4 text-ink">
+              <div className="px-5 py-4 font-medium text-brand-800">{row.label}</div>
+              <div className="flex items-center px-5 py-4 font-normal text-ink">
                 <RowValue row={row} />
               </div>
             </div>

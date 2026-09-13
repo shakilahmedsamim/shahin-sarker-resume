@@ -44,3 +44,23 @@ body {
   color: var(--color-ink);
   line-height: 1.6;
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  html {
+    font-size: 100%;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: #ffffff;
+  }
+}

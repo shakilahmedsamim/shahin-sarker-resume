@@ -28,3 +28,15 @@ npm run build
 ## ডিপ্লয়
 
 Vercel এ রিপোজিটরি ইমপোর্ট করলেই ফ্রেমওয়ার্ক অটো-ডিটেক্ট হয়ে ডিপ্লয় হয়ে যাবে, কোনো এক্সট্রা কনফিগারেশন লাগবে না।
+
+## PDF নতুন করে তৈরি করা
+
+"PDF ডাউনলোড" বাটনটি `public/shahin-sarker-biodata.pdf` ফাইলটা সরাসরি ডাউনলোড করায়। `src/data/resume.ts` এ কনটেন্ট বদলানোর পর এই ফাইলটা নতুন করে তৈরি করতে:
+
+```bash
+npm run build && npm run start   # সাইটটা লোকালি চালু করুন
+npm i -D playwright && npx playwright install chromium
+node scripts/generate-pdf.mjs
+```
+
+এটা আসল টেক্সট-ভিত্তিক (vector) PDF বানায়, স্ক্রিনশট নয় — তাই যেকোনো সাইজে জুম করলেও পরিষ্কার দেখাবে।

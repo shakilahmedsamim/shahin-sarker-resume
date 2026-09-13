@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="mt-16 bg-brand-900 text-brand-100">
+    <footer className="mt-16 bg-brand-900 text-brand-100 print:hidden">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-center sm:px-6">
         <div className="flex flex-wrap justify-center gap-6 text-base sm:text-lg">
           <a href="#" className="transition-colors hover:text-white">

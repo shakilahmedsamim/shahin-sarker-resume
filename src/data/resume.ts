@@ -10,9 +10,8 @@ export type Section = { id: string; title: string; rows: Row[] };
 
 export const profile = {
   name: "শাহিন সরকার",
-  refId: "SR-2026",
   photo: "/shahin-sarker-image/profile.jpg",
-  resumeUrl: "#",
+  resumeUrl: "/shahin-sarker-biodata.pdf",
 };
 
 export const quickFacts: Row[] = [
@@ -88,7 +87,7 @@ export const sections: Section[] = [
     id: "profession",
     title: "পেশাগত তথ্য",
     rows: [
-      { label: "পেশা", value: "[পেশা]" },
+      { label: "পেশা", value: "ব্যবসায়ী" },
       { label: "পেশার বিস্তারিত বিবরণ", value: "[বিবরণ]" },
     ],
   },

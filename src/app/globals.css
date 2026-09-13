@@ -34,7 +34,13 @@
 }
 
 html {
-  font-size: 112.5%;
+  font-size: 100%;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 112.5%;
+  }
 }
 
 body {

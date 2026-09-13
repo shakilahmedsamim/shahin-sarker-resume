@@ -44,7 +44,7 @@ export default function InfoSection({ section }: { section: Section }) {
       id={section.id}
       className="scroll-mt-20 overflow-hidden rounded-2xl border-2 border-brand-700 bg-white print:rounded-none print:border print:shadow-none"
     >
-      <h2 className="border-b border-brand-100 py-4 text-center text-lg font-semibold text-brand-700 sm:text-xl">
+      <h2 className="border-b border-brand-100 py-3 text-center text-base font-semibold text-brand-700 sm:py-4 sm:text-lg md:text-xl">
         {section.title}
       </h2>
       <div>
@@ -53,10 +53,10 @@ export default function InfoSection({ section }: { section: Section }) {
           return (
             <div
               key={row.label}
-              className={`grid grid-cols-2 divide-x divide-brand-100 border-t border-brand-100 text-base sm:text-lg ${zebra}`}
+              className={`grid grid-cols-2 divide-x divide-brand-100 border-t border-brand-100 text-xs sm:text-base md:text-lg ${zebra}`}
             >
-              <div className="px-5 py-4 font-medium text-brand-800">{row.label}</div>
-              <div className="px-5 py-4 font-normal text-ink">
+              <div className="px-2 py-2.5 font-medium text-brand-800 sm:px-5 sm:py-4">{row.label}</div>
+              <div className="px-2 py-2.5 font-normal text-ink sm:px-5 sm:py-4">
                 <RowValue row={row} />
               </div>
             </div>

@@ -38,16 +38,6 @@ function RowValue({ row }: { row: Row }) {
   return <span className="whitespace-pre-line font-normal">{row.value}</span>;
 }
 
-// A row stacks label above value (instead of sitting side by side in two
-// columns) once either side is too long to fit a half-width column without
-// squeezing both question and answer onto the same cramped line.
-const LONG_LABEL_CHARS = 28;
-const LONG_VALUE_CHARS = 24;
-
-function isLongRow(row: Row) {
-  return row.long || row.label.length > LONG_LABEL_CHARS || row.value.length > LONG_VALUE_CHARS;
-}
-
 export default function InfoSection({ section }: { section: Section }) {
   return (
     <section
@@ -60,26 +50,13 @@ export default function InfoSection({ section }: { section: Section }) {
       <div>
         {section.rows.map((row, index) => {
           const zebra = index % 2 === 0 ? "bg-white" : "bg-brand-50";
-          if (isLongRow(row)) {
-            return (
-              <div
-                key={row.label}
-                className={`border-t border-brand-100 px-5 py-4 text-base sm:text-lg ${zebra}`}
-              >
-                <div className="font-medium text-brand-800">{row.label}</div>
-                <div className="mt-2 font-normal text-ink">
-                  <RowValue row={row} />
-                </div>
-              </div>
-            );
-          }
           return (
             <div
               key={row.label}
               className={`grid grid-cols-2 divide-x divide-brand-100 border-t border-brand-100 text-base sm:text-lg ${zebra}`}
             >
               <div className="px-5 py-4 font-medium text-brand-800">{row.label}</div>
-              <div className="flex items-center px-5 py-4 font-normal text-ink">
+              <div className="px-5 py-4 font-normal text-ink">
                 <RowValue row={row} />
               </div>
             </div>

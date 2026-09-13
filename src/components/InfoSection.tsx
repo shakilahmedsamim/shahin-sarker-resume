@@ -17,30 +17,19 @@ function EmailIcon() {
   );
 }
 
-const hiddenValueIcons = { facebook: FacebookIcon, email: EmailIcon };
+const linkIcons = { facebook: FacebookIcon, email: EmailIcon };
 
 function RowValue({ row }: { row: Row }) {
-  if (row.icon && row.icon in hiddenValueIcons) {
-    const Icon = hiddenValueIcons[row.icon as keyof typeof hiddenValueIcons];
-    return (
-      <a
-        href={row.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={row.label}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-700 transition-colors hover:bg-brand-100"
-      >
-        <Icon />
-      </a>
-    );
-  }
-
   if (row.href) {
+    const Icon = row.icon && row.icon in linkIcons ? linkIcons[row.icon as keyof typeof linkIcons] : null;
     return (
       <a
         href={row.href}
-        className="text-brand-700 underline decoration-brand-100 underline-offset-2 hover:text-brand-800"
+        target={row.icon === "facebook" ? "_blank" : undefined}
+        rel={row.icon === "facebook" ? "noopener noreferrer" : undefined}
+        className="inline-flex items-start gap-2 break-all text-brand-700 underline decoration-brand-100 underline-offset-2 hover:text-brand-800"
       >
+        {Icon && <Icon />}
         {row.value}
       </a>
     );

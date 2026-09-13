@@ -178,8 +178,8 @@ export const sections: Section[] = [
       },
       {
         label: "ইমেইল",
-        value: "shakilsarker56@gmail.com",
-        href: "mailto:shakilsarker56@gmail.com",
+        value: "shahinsarker571997@gmail.com",
+        href: "mailto:shahinsarker571997@gmail.com",
         icon: "email",
       },
       {

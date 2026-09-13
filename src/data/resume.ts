@@ -18,10 +18,10 @@ export const profile = {
 export const quickFacts: Row[] = [
   { label: "বায়োডাটার ধরন", value: "পাত্রের বায়োডাটা" },
   { label: "বৈবাহিক অবস্থা", value: "অবিবাহিত" },
-  { label: "জন্মসন", value: "১০ জুন, ২০০১" },
-  { label: "উচ্চতা", value: "৫ ফুট ৪ ইঞ্চি" },
+  { label: "জন্মসন", value: "10 জুন, 2001" },
+  { label: "উচ্চতা", value: "5 ফুট 4 ইঞ্চি" },
   { label: "গাত্রবর্ণ", value: "শ্যামলা" },
-  { label: "ওজন", value: "৬০ কেজি" },
+  { label: "ওজন", value: "60 কেজি" },
   { label: "রক্তের গ্রুপ", value: "বি পজিটিভ" },
   { label: "জাতীয়তা", value: "বাংলাদেশী" },
 ];

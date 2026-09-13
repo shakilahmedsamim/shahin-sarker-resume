@@ -8,6 +8,7 @@ export const profile = {
   designation: "[পদবি, যেমন: সফটওয়্যার ইঞ্জিনিয়ার]",
   tagline: "[এক লাইনে নিজের পরিচয় লিখুন]",
   refId: "SR-2026",
+  photo: "/shahin-sarker-image/profile.jpg",
   location: "[শহর, দেশ]",
   phone: "[+৮৮০ XXXXXXXXXX]",
   email: "[email@example.com]",
@@ -15,12 +16,14 @@ export const profile = {
 };
 
 export const quickFacts: Row[] = [
-  { label: "পদবি", value: "[পদবি]" },
-  { label: "অভিজ্ঞতা", value: "[X বছর]" },
-  { label: "অবস্থান", value: "[শহর, দেশ]" },
-  { label: "প্রধান দক্ষতা", value: "[দক্ষতা ১, দক্ষতা ২]" },
-  { label: "ভাষা", value: "[বাংলা, ইংরেজি]" },
-  { label: "প্রাপ্যতা", value: "[তাৎক্ষণিক / আলোচনা সাপেক্ষে]" },
+  { label: "বায়োডাটার ধরন", value: "[পাত্র/পাত্রীর বায়োডাটা]" },
+  { label: "বৈবাহিক অবস্থা", value: "[অবিবাহিত]" },
+  { label: "জন্মসন", value: "[মাস, বছর]" },
+  { label: "উচ্চতা", value: "[ফুট' ইঞ্চি\"]" },
+  { label: "গাত্রবর্ণ", value: "[গাত্রবর্ণ]" },
+  { label: "ওজন", value: "[ওজন]" },
+  { label: "রক্তের গ্রুপ", value: "[রক্তের গ্রুপ]" },
+  { label: "জাতীয়তা", value: "[জাতীয়তা]" },
 ];
 
 export const sections: Section[] = [
@@ -100,12 +103,4 @@ export const sections: Section[] = [
       { label: "লিংকডইন / পোর্টফোলিও", value: "[লিংক]" },
     ],
   },
-];
-
-export const navLinks = [
-  { href: "#personal", label: "সম্পর্কে" },
-  { href: "#education", label: "শিক্ষা" },
-  { href: "#experience", label: "অভিজ্ঞতা" },
-  { href: "#skills", label: "দক্ষতা" },
-  { href: "#contact", label: "যোগাযোগ" },
 ];

@@ -3,36 +3,43 @@ import Avatar from "@/components/Avatar";
 
 export default function ProfileCard() {
   return (
-    <aside className="w-full shrink-0 self-start rounded-2xl border border-brand-100 bg-white shadow-sm md:w-80 lg:w-96 print:w-full print:rounded-none print:border-0 print:shadow-none">
-      <div className="flex flex-col items-center gap-3 rounded-t-2xl bg-gradient-to-b from-brand-700 to-brand-800 px-6 py-8 text-center text-white">
-        <Avatar src={profile.photo} alt={profile.name} />
-        <h1 className="text-2xl font-semibold sm:text-3xl">{profile.name}</h1>
-      </div>
+    <div className="flex w-full shrink-0 flex-col gap-3 md:w-80 lg:w-96 print:w-full">
+      <aside className="overflow-hidden rounded-2xl bg-brand-700 text-white print:rounded-none">
+        <div className="flex flex-col items-center gap-3 px-6 pb-6 pt-8 text-center">
+          <Avatar src={profile.photo} alt={profile.name} />
+          <h1 className="text-2xl font-bold sm:text-3xl">{profile.name}</h1>
+        </div>
 
-      <dl className="divide-y divide-brand-50 text-base sm:text-lg">
-        {quickFacts.map((fact) => (
-          <div key={fact.label} className="flex justify-between gap-4 px-5 py-3.5">
-            <dt className="text-ink-soft">{fact.label}</dt>
-            <dd className="text-right font-medium text-ink">{fact.value}</dd>
-          </div>
-        ))}
-      </dl>
+        <dl className="text-base sm:text-lg">
+          {quickFacts.map((fact, index) => (
+            <div
+              key={fact.label}
+              className={`grid grid-cols-2 divide-x divide-white/20 border-t border-white/20 text-center ${
+                index % 2 === 0 ? "bg-white/0" : "bg-black/10"
+              }`}
+            >
+              <dt className="px-3 py-3.5">{fact.label}</dt>
+              <dd className="px-3 py-3.5 font-semibold">{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </aside>
 
-      <div className="flex flex-col gap-3 px-5 pb-6 pt-3 print:hidden">
+      <div className="flex gap-3 print:hidden">
         <a
           href={profile.resumeUrl}
           download
-          className="rounded-full border border-brand-700 px-4 py-2.5 text-center text-base font-semibold text-brand-700 transition-colors hover:bg-brand-50 sm:text-lg"
+          className="flex-1 rounded-full border border-brand-700 px-4 py-2.5 text-center text-base font-semibold text-brand-700 transition-colors hover:bg-brand-50 sm:text-lg"
         >
           PDF ডাউনলোড
         </a>
         <a
           href="#contact"
-          className="rounded-full bg-brand-700 px-4 py-2.5 text-center text-base font-semibold text-white transition-colors hover:bg-brand-800 sm:text-lg"
+          className="flex-1 rounded-full bg-brand-700 px-4 py-2.5 text-center text-base font-semibold text-white transition-colors hover:bg-brand-800 sm:text-lg"
         >
           যোগাযোগ করুন
         </a>
       </div>
-    </aside>
+    </div>
   );
 }

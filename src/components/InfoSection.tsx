@@ -53,25 +53,39 @@ export default function InfoSection({ section }: { section: Section }) {
   return (
     <section
       id={section.id}
-      className="scroll-mt-20 overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm print:rounded-none print:border-0 print:shadow-none"
+      className="scroll-mt-20 overflow-hidden rounded-2xl border-2 border-brand-700 bg-white print:rounded-none print:border print:shadow-none"
     >
-      <h2 className="bg-brand-700 py-3.5 text-center text-lg font-semibold text-white sm:text-xl">
+      <h2 className="border-b border-brand-100 py-4 text-center text-lg font-bold text-brand-700 sm:text-xl">
         {section.title}
       </h2>
-      <div className="divide-y divide-brand-50">
-        {section.rows.map((row) => (
-          <div
-            key={row.label}
-            className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]"
-          >
-            <div className="bg-brand-50 px-5 py-3.5 text-base font-medium text-brand-800 sm:text-lg">
-              {row.label}
+      <div>
+        {section.rows.map((row, index) => {
+          const zebra = index % 2 === 0 ? "bg-white" : "bg-brand-50";
+          if (row.long) {
+            return (
+              <div
+                key={row.label}
+                className={`border-t border-brand-100 px-5 py-4 text-base sm:text-lg ${zebra}`}
+              >
+                <div className="font-semibold text-brand-800">{row.label}</div>
+                <div className="mt-2 text-ink">
+                  <RowValue row={row} />
+                </div>
+              </div>
+            );
+          }
+          return (
+            <div
+              key={row.label}
+              className={`grid grid-cols-2 divide-x divide-brand-100 border-t border-brand-100 text-base sm:text-lg ${zebra}`}
+            >
+              <div className="px-5 py-4 font-semibold text-brand-800">{row.label}</div>
+              <div className="flex items-center px-5 py-4 text-ink">
+                <RowValue row={row} />
+              </div>
             </div>
-            <div className="flex items-center px-5 py-3.5 text-base text-ink sm:text-lg">
-              <RowValue row={row} />
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

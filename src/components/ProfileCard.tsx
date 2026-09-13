@@ -3,7 +3,7 @@ import Avatar from "@/components/Avatar";
 
 export default function ProfileCard() {
   return (
-    <aside className="w-full max-w-xs shrink-0 self-start rounded-2xl border border-brand-100 bg-white shadow-sm">
+    <aside className="w-full shrink-0 self-start rounded-2xl border border-brand-100 bg-white shadow-sm md:w-80 lg:w-96">
       <div className="flex flex-col items-center gap-3 rounded-t-2xl bg-gradient-to-b from-brand-700 to-brand-800 px-6 py-8 text-center text-white">
         <Avatar src={profile.photo} alt={profile.name} />
         <h1 className="text-2xl font-semibold sm:text-3xl">{profile.name}</h1>

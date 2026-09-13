@@ -4,7 +4,7 @@ export type Row = { label: string; value: string };
 export type Section = { id: string; title: string; rows: Row[] };
 
 export const profile = {
-  name: "[আপনার পূর্ণ নাম]",
+  name: "শাহিন সরকার",
   designation: "[পদবি, যেমন: সফটওয়্যার ইঞ্জিনিয়ার]",
   tagline: "[এক লাইনে নিজের পরিচয় লিখুন]",
   refId: "SR-2026",
@@ -31,7 +31,7 @@ export const sections: Section[] = [
     id: "personal",
     title: "ব্যক্তিগত তথ্য",
     rows: [
-      { label: "পূর্ণ নাম", value: "[আপনার পূর্ণ নাম]" },
+      { label: "পূর্ণ নাম", value: "শাহিন সরকার" },
       { label: "জন্ম তারিখ", value: "[তারিখ, মাস, বছর]" },
       { label: "জাতীয়তা", value: "[জাতীয়তা]" },
       { label: "বর্তমান ঠিকানা", value: "[বর্তমান ঠিকানা]" },

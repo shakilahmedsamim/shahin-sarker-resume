@@ -27,7 +27,12 @@
   --font-sans: var(--font-bangla);
 }
 
+html {
+  font-size: 112.5%;
+}
+
 body {
   background: var(--color-surface);
   color: var(--color-ink);
+  line-height: 1.6;
 }

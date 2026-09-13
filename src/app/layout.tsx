@@ -10,8 +10,8 @@ const hindSiliguri = Hind_Siliguri({
 });
 
 export const metadata: Metadata = {
-  title: "শাহীন সরকার | রেজুমে",
-  description: "শাহীন সরকারের অনলাইন রেজুমে ও পোর্টফোলিও",
+  title: "শাহিন সরকার | রেজুমে",
+  description: "শাহিন সরকারের অনলাইন রেজুমে ও পোর্টফোলিও",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

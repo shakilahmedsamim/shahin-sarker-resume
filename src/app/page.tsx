@@ -5,7 +5,7 @@ import { sections } from "@/data/resume";
 export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="flex flex-col gap-8 md:flex-row">
         <ProfileCard />
         <div className="flex flex-1 flex-col gap-6">
           {sections.map((section) => (

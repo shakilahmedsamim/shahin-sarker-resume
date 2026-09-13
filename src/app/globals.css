@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "SolaimanLipi";
+  src: url("/fonts/SolaimanLipi.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-brand-900: #3b1a5c;
   --color-brand-800: #4a2170;
@@ -24,7 +32,7 @@
   --color-surface: var(--color-surface);
   --color-ink: var(--color-ink);
   --color-ink-soft: var(--color-ink-soft);
-  --font-sans: var(--font-bangla);
+  --font-sans: "SolaimanLipi", sans-serif;
 }
 
 html {

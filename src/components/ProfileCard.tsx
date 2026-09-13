@@ -7,7 +7,6 @@ export default function ProfileCard() {
       <div className="flex flex-col items-center gap-3 rounded-t-2xl bg-gradient-to-b from-brand-700 to-brand-800 px-6 py-8 text-center text-white">
         <Avatar src={profile.photo} alt={profile.name} />
         <h1 className="text-2xl font-semibold sm:text-3xl">{profile.name}</h1>
-        <p className="text-base text-brand-100/90 sm:text-lg">{profile.designation}</p>
         <span className="rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium sm:text-base">
           বায়োডাটা নং : {profile.refId}
         </span>

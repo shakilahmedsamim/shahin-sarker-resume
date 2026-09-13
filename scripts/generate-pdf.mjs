@@ -1,33 +1,83 @@
-// Dev-only tool. Requires the site running locally and Playwright installed
-// (npm i -D playwright, then npx playwright install chromium) since neither
-// is a project dependency. Run: node scripts/generate-pdf.mjs
+// Runs automatically after every `npm run build` (see package.json "postbuild"),
+// so the PDF always matches whatever is currently in src/data/resume.ts.
+// Renders the real page in Chromium and prints it as one continuous page
+// (page height = content height) so no section or table row ever gets cut
+// across a page break. Never fails the build: any error here is logged and
+// swallowed, leaving the last committed PDF in place.
 
 import { chromium } from "playwright";
+import { spawn } from "node:child_process";
+import { setTimeout as sleep } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
-const url = process.env.PDF_SOURCE_URL || "http://localhost:3100";
-const outPath = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "public",
-  "shahin-sarker-biodata.pdf",
-);
+const rootDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const outPath = path.join(rootDir, "public", "shahin-sarker-biodata.pdf");
 
-const browser = await chromium.launch({
-  executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH || undefined,
-});
-const page = await browser.newPage();
-await page.goto(url, { waitUntil: "networkidle" });
-await page.evaluate(() => document.fonts.ready);
-await page.waitForTimeout(500);
-await page.emulateMedia({ media: "print" });
-await page.pdf({
-  path: outPath,
-  format: "A4",
-  printBackground: true,
-  margin: { top: "10mm", bottom: "10mm", left: "10mm", right: "10mm" },
-});
-await browser.close();
+async function waitForServer(url, timeoutMs) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return true;
+    } catch {
+      // server not ready yet
+    }
+    await sleep(300);
+  }
+  return false;
+}
 
-console.log("Saved:", outPath);
+async function run() {
+  let serverProcess = null;
+  let baseUrl = process.env.PDF_SOURCE_URL;
+
+  if (!baseUrl) {
+    const port = 4173;
+    baseUrl = `http://127.0.0.1:${port}`;
+    serverProcess = spawn(
+      process.platform === "win32" ? "npx.cmd" : "npx",
+      ["next", "start", "-p", String(port)],
+      { cwd: rootDir, stdio: "ignore" },
+    );
+    const ready = await waitForServer(baseUrl, 30000);
+    if (!ready) throw new Error("local production server did not start in time");
+  }
+
+  const browser = await chromium.launch({
+    executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH || undefined,
+  });
+
+  try {
+    // A4 width at 96 CSS px/inch, so the measured layout matches what
+    // page.pdf() actually renders at print time (avoids a viewport/print
+    // width mismatch that would make the height estimate come out short).
+    const printWidthPx = 794;
+    const page = await browser.newPage({ viewport: { width: printWidthPx, height: 1200 } });
+    await page.goto(baseUrl, { waitUntil: "networkidle" });
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(300);
+    await page.emulateMedia({ media: "print" });
+
+    const heightPx = await page.evaluate(() => document.documentElement.scrollHeight);
+    const heightIn = heightPx / 96 + 0.6;
+
+    await page.pdf({
+      path: outPath,
+      width: "210mm",
+      height: `${heightIn}in`,
+      printBackground: true,
+      margin: { top: "10mm", bottom: "10mm", left: "10mm", right: "10mm" },
+    });
+  } finally {
+    await browser.close();
+    serverProcess?.kill();
+  }
+
+  console.log("Saved:", outPath);
+}
+
+run().catch((err) => {
+  console.warn("PDF generation skipped:", err.message);
+  process.exitCode = process.env.PDF_STRICT ? 1 : 0;
+});

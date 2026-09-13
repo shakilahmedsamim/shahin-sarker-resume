@@ -53,7 +53,7 @@ export default function InfoSection({ section }: { section: Section }) {
   return (
     <section
       id={section.id}
-      className="scroll-mt-20 overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm"
+      className="scroll-mt-20 overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm print:rounded-none print:border-0 print:shadow-none"
     >
       <h2 className="bg-brand-700 py-3.5 text-center text-lg font-semibold text-white sm:text-xl">
         {section.title}

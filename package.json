@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/generate-pdf.mjs || exit 0",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:pdf": "node scripts/generate-pdf.mjs"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -21,7 +21,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
-    "playwright": "^1.63.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

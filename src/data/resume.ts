@@ -16,14 +16,14 @@ export const profile = {
 };
 
 export const quickFacts: Row[] = [
-  { label: "বায়োডাটার ধরন", value: "[পাত্র/পাত্রীর বায়োডাটা]" },
-  { label: "বৈবাহিক অবস্থা", value: "[অবিবাহিত]" },
-  { label: "জন্মসন", value: "[মাস, বছর]" },
-  { label: "উচ্চতা", value: "[ফুট' ইঞ্চি\"]" },
-  { label: "গাত্রবর্ণ", value: "[গাত্রবর্ণ]" },
-  { label: "ওজন", value: "[ওজন]" },
-  { label: "রক্তের গ্রুপ", value: "[রক্তের গ্রুপ]" },
-  { label: "জাতীয়তা", value: "[জাতীয়তা]" },
+  { label: "বায়োডাটার ধরন", value: "পাত্রের বায়োডাটা" },
+  { label: "বৈবাহিক অবস্থা", value: "অবিবাহিত" },
+  { label: "জন্মসন", value: "১০ জুন, ২০০১" },
+  { label: "উচ্চতা", value: "৫ ফুট ৪ ইঞ্চি" },
+  { label: "গাত্রবর্ণ", value: "শ্যামলা" },
+  { label: "ওজন", value: "৬০ কেজি" },
+  { label: "রক্তের গ্রুপ", value: "বি পজিটিভ" },
+  { label: "জাতীয়তা", value: "বাংলাদেশী" },
 ];
 
 export const sections: Section[] = [

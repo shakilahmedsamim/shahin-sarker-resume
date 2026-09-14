@@ -42,7 +42,7 @@ export default function InfoSection({ section }: { section: Section }) {
   return (
     <section
       id={section.id}
-      className="scroll-mt-20 overflow-hidden rounded-2xl border-2 border-brand-700 bg-white print:rounded-none print:border print:shadow-none"
+      className="scroll-mt-20 overflow-hidden rounded-2xl border-2 border-brand-700 bg-white print:break-inside-avoid print:rounded-none print:border print:shadow-none"
     >
       <h2 className="border-b border-brand-100 py-3 text-center text-base font-semibold text-brand-700 sm:py-4 sm:text-lg md:text-xl">
         {section.title}
@@ -53,7 +53,7 @@ export default function InfoSection({ section }: { section: Section }) {
           return (
             <div
               key={row.label}
-              className={`grid grid-cols-2 divide-x divide-brand-100 border-t border-brand-100 text-xs sm:text-base md:text-lg ${zebra}`}
+              className={`grid grid-cols-2 divide-x divide-brand-100 border-t border-brand-100 text-xs sm:text-base md:text-lg print:break-inside-avoid ${zebra}`}
             >
               <div className="px-2 py-2.5 font-medium text-brand-800 sm:px-5 sm:py-4">{row.label}</div>
               <div className="px-2 py-2.5 font-normal text-ink sm:px-5 sm:py-4">

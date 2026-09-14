@@ -4,7 +4,7 @@ import Avatar from "@/components/Avatar";
 export default function ProfileCard() {
   return (
     <div className="flex w-full shrink-0 flex-col gap-3 md:w-80 lg:w-96 print:w-full">
-      <aside className="overflow-hidden rounded-2xl bg-brand-700 text-white print:rounded-none">
+      <aside className="overflow-hidden rounded-2xl bg-brand-700 text-white print:break-inside-avoid print:rounded-none">
         <div className="flex flex-col items-center gap-3 px-6 pb-6 pt-8 text-center">
           <Avatar src={profile.photo} alt={profile.name} />
           <h1 className="text-xl font-bold sm:text-2xl md:text-3xl">{profile.name}</h1>
